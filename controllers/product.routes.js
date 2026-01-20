@@ -4,7 +4,7 @@ const Product= require('../models/Product');
 //read all products
 router.get('/', async(req,res)=>{               // shows all products
 try {const allproduct= await Product.find();
-    res.render('Products/All products',{allProduct:allproduct});} 
+    res.render('Products/All-products.ejs',{allProduct:allproduct});} 
 catch (error) {
     res.send("Error occured",error);}   
 });
@@ -12,13 +12,14 @@ catch (error) {
 
 
 //creat a new product
-router.get('/product/new', (req, res) => { // form to create a new product
-    res.render('Products/New product');
+router.get('/new', (req, res) => { // form to create a new product
+    res.render('Products/add-product.ejs');
 }); 
-router.post('/product', async (req, res) => { // create a new product
-    try {const newProduct = await Product.create(req.body);
+router.post('/', async (req, res) => { // create a new product
+    try {
+        const newProduct = await Product.create(req.body);
     } catch (error) {
-        res.send("Error occurred: " + error.message);}
+        res.send("Error occurred: ", error);}
 });
 
 
