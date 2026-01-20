@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
  phone: {
     type: Number,
     required: true,
-    unique: true, // رقم الهاتف لازم يكون مميز
+    unique: true, 
     min: 10000000, // munimu 8 nmuber for bahrani numbers
     max: 99999999 // maxium 8 nmuber for bahrani numbers
   } ,
