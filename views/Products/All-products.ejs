@@ -18,14 +18,14 @@
                 <p>Description: <%= product.description %></p>
                 <p>Seller Username: <%= product.username %></p>
                 <p>Seller Phone: <%= product.phone %></p>
-                <a href="/product/<%= product._id %>/edit">Edit</a> |
+                <button type="button" onclick="window.location.href='/product/<%= product._id %>/edit'">Edit</button> |
                 <form action="/product/<%= product._id %>?_method=DELETE" method="POST">
                     <button type="submit">Delete</button>
                 </form>
             </li>
         <% }); %>
 
-  <a href="/products/new">Add New Product</a> | 
+  <a href="/product/new">Add New Product</a> | 
   <a href="/">Back to Home</a>
 
 
