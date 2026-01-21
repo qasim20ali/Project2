@@ -3,10 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Add Product</title>
 </head>
 <body>
-    <h1>Add Products Page</h1>
-    
+     <%- include('../navbar') %>
+
+  <h1>Add New Product</h1>
+
+  <form action="/product" method="POST">
+    <label>Name:</label>
+    <input type="text" name="name" required><br>
+
+    <label>Price:</label>
+    <input type="number" name="price" required><br>
+
+    <label>Stock:</label>
+    <input type="number" name="stock" required><br>
+
+    <label>Category:</label>
+    <select name="category" required>
+      <option value="Smart Switch">Smart Switch</option>
+      <option value="Smart Lights">Smart Lights</option>
+      <option value="Smart Camera">Smart Camera</option>
+      <option value="Smart Plugs">Smart Plugs</option>
+      <option value="Other">Other</option>
+    </select><br>
+
+    <label>Description:</label>
+    <textarea name="description"></textarea><br>
+
+    <label>Seller Username:</label>
+    <input type="text" name="username" required><br>
+
+    <label>Seller Phone:</label>
+    <input type="number" name="phone" required><br>
+
+    <button type="submit">Save Product</button>
+  </form>
+
+  <a href="/products">Back to Products</a> | 
+  <a href="/">Back to Home</a>
+
+
+
 </body>
 </html>

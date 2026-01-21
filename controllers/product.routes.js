@@ -18,6 +18,7 @@ router.get('/new', (req, res) => { // form to create a new product
 router.post('/', async (req, res) => { // create a new product
     try {
         const newProduct = await Product.create(req.body);
+        res.redirect('/product');
     } catch (error) {
         res.send("Error occurred: ", error);}
 });

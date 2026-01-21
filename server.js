@@ -68,6 +68,19 @@ app.use('/auth',authController)
 app.use('/',indexController)
 app.use('/product',productcontroller) 
 
+    //delete product route
+  const Product = require("./models/Product");
+
+app.delete('/product/:id', async (req, res) => {
+  try {
+    await Product.findByIdAndDelete(req.params.id);
+    res.redirect('/product'); // يرجعك لصفحة المنتجات بعد الحذف
+  } catch (err) {
+    res.status(500).send(err.message);
+  }
+});
+
+
 
 
 // PROTECTED ROUTES:

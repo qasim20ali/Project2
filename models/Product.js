@@ -34,7 +34,12 @@ const productSchema = new mongoose.Schema({
   phone: {
     type: Number,
     required: true // seller's phone number
-      }
+      },
+      Seller: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    
+  }
 }, { timestamps: true });
 
 const Product = mongoose.model('Product', productSchema);
