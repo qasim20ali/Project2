@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Product</title>
+</head>
+<body>
+     <%- include('../navbar') %>
+
+  <h1>Edit Product</h1>
+
+  <form action="/product/<%= product._id %>?_method=PUT" method="POST">
+    <label>Name:</label>
+    <input type="text" name="name" value="<%= product.name %>" required><br>
+
+    <label>Price:</label>
+    <input type="number" name="price" value="<%= product.price %>" required><br>
+
+    <label>Stock:</label>
+    <input type="number" name="stock" value="<%= product.stock %>" required><br>
+
+    <label>Category:</label>
+    <select name="category" required>
+      <option value="Smart Switch" <%= product.category === 'Smart Switch' ? 'selected' : '' %>>Smart Switch</option>
+      <option value="Smart Lights" <%= product.category === 'Smart Lights' ? 'selected' : '' %>>Smart Lights</option>
+      <option value="Smart Camera" <%= product.category === 'Smart Camera' ? 'selected' : '' %>>Smart Camera</option>
+      <option value="Smart Plugs" <%= product.category === 'Smart Plugs' ? 'selected' : '' %>>Smart Plugs</option>
+      <option value="Other" <%= product.category === 'Other' ? 'selected' : '' %>>Other</option>
+    </select><br>
+
+    <label>Description:</label>
+    <textarea name="description"><%= product.description %></textarea><br>
+
+    <label>Seller Username:</label>
+    <input type="text" name="username" value="<%= product.username %>" required><br>
+
+    <label>Seller Phone:</label>
+    <input type="number" name="phone" value="<%= product.phone %>" required><br>
+
+    <button type="submit">Update Product</button>
+  </form>
+
+  <a href="/product">Back to Products</a> | 
+  <a href="/">Back to Home</a> 
+
+
+
+</body>
+</html>

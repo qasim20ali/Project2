@@ -23,8 +23,35 @@ router.post('/', async (req, res) => { // create a new product
         res.send("Error occurred: ", error);}
 });
 
+//delete product route
+router.delete('/:id', async (req, res) => {
+  try {
+    await Product.findByIdAndDelete(req.params.id); 
+    res.redirect('/product');
+  } catch (err) {
+    res.status(500).send(err.message);
+  } 
+});
 
 
+//update product routes
+router.get('/:id/edit', async (req, res) => {
+  try {
+    const product = await Product.findById(req.params.id);
+    res.render('Products/edit-product.ejs', { product });
+  } catch (error) {
+    res.send("Error occurred: ", error);
+  }
+});
+
+router.put('/:id', async (req, res) => {
+  try {
+    await Product.findByIdAndUpdate(req.params.id, req.body);
+    res.redirect('/product');
+  } catch (error) {
+    res.send("Error occurred: ", error);
+  }
+});
 
 
 module.exports = router;
