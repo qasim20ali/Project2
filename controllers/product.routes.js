@@ -1,5 +1,7 @@
 const router = require('express').Router();
 const Product= require('../models/Product');
+const isSignedIn = require('../middleware/is-signed-in');
+const isSeller = require('../middleware/is-seller');
 
 //read all products
 router.get('/', async(req,res)=>{               // shows all products
@@ -8,6 +10,12 @@ try {const allproduct= await Product.find();
 catch (error) {
     res.send("Error occured",error);}   
 });
+
+// protect all routes below this line
+router.use(isSignedIn);
+
+// restrict to sellers only
+router.use(isSeller);
 
 
 
@@ -52,6 +60,5 @@ router.put('/:id', async (req, res) => {
     res.send("Error occurred: ", error);
   }
 });
-
 
 module.exports = router;

@@ -66,18 +66,7 @@ connectToDB() // connect to database
 // Routes go here
 app.use('/auth',authController)
 app.use('/',indexController)
-app.use('/product',productcontroller) 
-
-    //delete product route
-  const Product = require("./models/Product");
-
 app.use('/product', productcontroller)
-
-
-
-
-// PROTECTED ROUTES:
-app.use(isSignedIn)
 // Everything under the user NEEDS to be logged in to se
 
 

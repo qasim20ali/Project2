@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/user.js");
 const bcrypt = require("bcrypt");
+const isSignedIn = require("../middleware/is-signed-in");
 
 
 // Sign up routes
@@ -58,7 +59,8 @@ router.post("/sign-in", async (req, res) => {
   // If there is other data you want to save to `req.session.user`, do so here!
   req.session.user = {
     username: userInDatabase.username,
-    _id: userInDatabase._id
+    _id: userInDatabase._id,
+    role: userInDatabase.role
   };
 
   res.redirect("/");
@@ -70,8 +72,14 @@ router.get("/sign-out", (req, res) => {
   res.redirect("/");
 });
 
-
-
-
+// Profile route (Read user)
+router.get("/profile", isSignedIn, async (req, res) => {
+  try {
+    const user = await User.findById(req.session.user._id);
+    res.render("auth/profile.ejs", { user });
+  } catch (error) {
+    res.send("Error occurred: " + error);
+  }
+});
 
 module.exports = router;
