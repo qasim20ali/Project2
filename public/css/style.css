@@ -46,7 +46,7 @@ a:hover {
 
 /* Navbar Styles */
 div {
-  background: #34495e;
+  background: #310ab4;
   padding: 10px;
   margin-bottom: 20px;
 }
@@ -86,14 +86,14 @@ input, select, button {
 }
 
 button {
-  background: #3498db;
+  background: #3a0dae;
   color: #fff;
   border: none;
   cursor: pointer;
 }
 
 button:hover {
-  background: #2980b9;
+  background: #2205a3;
 }
 
 /* Responsive */
